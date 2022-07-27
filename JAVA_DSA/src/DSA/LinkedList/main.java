@@ -1,22 +1,24 @@
 package DSA.LinkedList;
 
-import java.util.Arrays;
-
-public class main {
+public class Main {
     public static void main(String[] args) {
-        try {
-            int n = 5;
-            int[] arr = new int[5];
-            arr[0] = 10;
-            arr[1] = 20;
-            arr[2] = 30;
-            arr[3] = 40;
-            arr[4] = 50;
-            arr[5] = 60;
-
-            System.out.println(Arrays.toString(arr));
-        }catch (Exception e){
-            System.out.println("hi");
-        }
+        LL list = new LL();
+        list.insertFirst(1);
+        list.insertFirst(2);
+        list.insertFirst(3);
+        list.insertlast(4);
+        list.insertFirst(5);
+        list.insertlast(6);
+        list.insertlast(7);
+        list.insert(100, 3);
+        list.display();
+        System.out.println(list.deletFirst());
+        list.display();
+        System.out.println(list.delectlast());
+        list.display();
+        System.out.println(list.delete(2));
+        list.display();
+//        System.out.println(list.find(3));
+        list.find(4);
     }
 }
