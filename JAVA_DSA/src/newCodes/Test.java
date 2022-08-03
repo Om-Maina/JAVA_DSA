@@ -1,10 +1,24 @@
 package newCodes;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-public class Test {
+public class Test implements Cloneable{
     public static void main(String[] args) {
-        
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(1);
+        list.add(1);
+        list.add(1);
+        list.add(4);
+        list.listIterator(3);
+        System.out.println(list);
+      //  System.out.println( list.listIterator(3));
+
+        List<Integer> list1 = new ArrayList<>();
+        ((ArrayList<Integer>) list).clone().equals(list1);
+        System.out.println(list1);
     }
     public int coinChange(int[] coins, int amount) {
         Arrays.sort(coins);

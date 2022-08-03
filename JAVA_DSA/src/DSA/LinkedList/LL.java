@@ -117,6 +117,21 @@ public class LL {
         return null;
     }
 
+    //inserting node useing resu
+    public void insertRec(int val, int index) {
+        head = insertRec(val, index, head);
+    }
+
+    private Node insertRec(int val, int index, Node node) {
+        if (index == 0) {
+            Node temp = new Node(val, node);
+            size++;
+            return temp;
+        }
+        node.next = insertRec(val, index - 1, node.next);
+        return node;
+    }
+
     private class Node {
         private int value;
         private Node next;
@@ -129,6 +144,113 @@ public class LL {
             this.value = value;
             this.next = next;
         }
+    }
+
+    //question leetcode https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+    public void duplicate() {
+        Node node = head;
+        while (node.next != null) {
+            if (node.value == node.next.value) {
+                node.next = node.next.next;
+                size--;
+
+            } else {
+                node = node.next;
+
+            }
+        }
+        tail = node;
+        tail.next = null;
+    }
+
+    //merge
+    public static LL merge(LL first, LL second) {
+        Node f = first.head;
+        Node s = second.head;
+        LL ans = new LL();
+        while (f != null && s != null) {
+            if (f.value < s.value) {
+                ans.insertlast(f.value);
+                f = f.next;
+            } else {
+                ans.insertlast(s.value);
+                s = s.next;
+            }
+        }
+        while (f != null) {
+            ans.insertlast(f.value);
+            f = f.next;
+        }
+        while (s != null) {
+            ans.insertlast(s.value);
+            s = s.next;
+        }
+        return ans;
+    }
+
+    public void bubbleSort() {
+        bubbleSort(size - 1, 0);
+
+    }
+
+    private void bubbleSort(int row, int col) {
+        if (row == 0) {
+            return;
+        }
+        if (col < row) {
+            Node first = get(col);
+            Node second = get(col + 1);
+
+            if (first.value > second.value) {
+                if (first == head) {
+                    head = second;
+                    first.next = second.next;
+                    second.next = first;
+                } else if (second == tail) {
+                    Node prev = get(col - 1);
+                    prev.next = second;
+                    tail = first;
+                    first.next = null;
+                    second.next = tail;
+                } else {
+                    Node prev = get(col - 1);
+                    prev.next = second;
+                    first.next = second.next;
+                    second.next = first;
+                }
+            }
+            bubbleSort(row, col + 1);
+        } else {
+            bubbleSort(row - 1, 0);
+        }
+    }
+
+    public static void main(String[] args) {
+        LL first = new LL();
+        LL second = new LL();
+        first.insertlast(1);
+        first.insertlast(3);
+        first.insertlast(5);
+
+        second.insertlast(1);
+        second.insertlast(2);
+        second.insertlast(9);
+        second.insertlast(14);
+        //ans.display();
+        // list.duplicate();
+        //System.out.println(" ");
+        //  list.display();
+    //    LL ans = LL.merge(first, second);
+      //  ans.display();
+
+        LL list = new LL();
+        for (int i = 7; i > 0; i--) {
+            list.insertlast(i);
+        }
+        list.display();
+        list.bubbleSort();
+        System.out.println();
+        list.display();
     }
 }
 
