@@ -4,7 +4,7 @@ import com.sun.security.jgss.GSSUtil;
 
 public class FibonacciNumber {
     public static void main(String[] args) {
-      int ans = fibo(50);
+      int ans = fibo(10);
         System.out.println(ans);
     }
     static int fibo(int n){

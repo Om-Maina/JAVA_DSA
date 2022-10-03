@@ -3,16 +3,16 @@ package DSA.patternQuestion;
 public class Pattern1 {
     public static void main(String[] args) {
      //   System.out.println(pattern1(););
-        //pattern1(5);
-      //  pattern2(5);
-        //pattern3(5);
+        pattern1(5);
+//        pattern2(5);
+//        pattern3(5);
         //pattern4(5);
         //pattern5(5);
       //  pattern6(5);
       //  pattern7(5);
         //pattern8(5);
         //pattern9(5);
-        pattern10(5);
+//        pattern10(5);
     }
     static void pattern10(int n){
         int orignalN = n;
@@ -111,6 +111,7 @@ public class Pattern1 {
             System.out.println();
         }
     }
+
     static void pattern2(int n){
         for(int row =1; row<=n;row++){
             for (int col =1; col<= n; col++){
